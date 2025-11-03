@@ -1,7 +1,7 @@
 export const About = () => (
-  <section id="about" className="min-h-screen flex items-center justify-center py-20">
-    <div className="container mx-auto px-6 bg-green-900">
-      <h2 className="text-4xl font-bold mb-8 text-center text-shadow" data-aos="fade-down">
+  <section id="about" className="mx-aut flex items-center justify-center">
+    <div className="container mx-auto px-6 text-white ">
+      <h2 className="text-4xl font-bold mb-8 text-center text-shadow " data-aos="fade-down">
         About Me
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
