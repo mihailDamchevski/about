@@ -1,6 +1,12 @@
 export const About = () => (
   <section id="about" className="mx-aut flex items-center justify-center">
     <div className="container mx-auto px-6 text-white ">
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
       <h2 className="text-4xl font-bold mb-8 text-center text-shadow " data-aos="fade-down">
         About Me
       </h2>
