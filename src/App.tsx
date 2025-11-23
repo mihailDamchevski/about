@@ -1,6 +1,6 @@
 import { About } from "./components/about";
 import { Beat } from "./components/beat";
-import { Center } from "./components/center";
+import { Layout } from "./components/layout";
 import { Footer } from "./components/footer";
 import { Header } from "./components/header";
 import { Projects } from "./components/projects";
@@ -10,13 +10,13 @@ function App() {
     <>
       <Header />
       <main className="bg-black">
-        <Center>
+        <Layout>
           <About></About>
           <Projects></Projects>
-        </Center>
+        </Layout>
         <Beat />
       </main>
-      <Footer></Footer>
+      <Footer />
     </>
   );
 }

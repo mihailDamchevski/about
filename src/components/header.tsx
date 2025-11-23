@@ -3,10 +3,8 @@ import { mihailAscii, qasw } from "../constants/mihailascii";
 
 export const Header = () => {
   return (
-  <>
-   
-    <header className="fixed top-0 left-0 w-full bg-black bg-opacity-50 backdrop-blur-md text-gray-400 z-50 flex flex-col items-center justify-center overflow-hidden px-4 py-2">
-      
+    <header className="w-full bg-black bg-opacity-50 backdrop-blur-md text-gray-400 flex flex-col items-center justify-center overflow-hidden px-4 py-2">
+
       <div className="w-full flex justify-center overflow-hidden">
         <pre
           className="font-mono leading-none whitespace-pre text-center"
@@ -81,9 +79,5 @@ export const Header = () => {
         </ul>
       </nav>
     </header>
-
-    <main className="mt-[15vh] md:mt-[150px]">
-    </main>
-  </>
-);
+  );
 };
