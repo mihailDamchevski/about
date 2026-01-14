@@ -7,17 +7,15 @@ import { Projects } from "./components/projects";
 
 function App() {
   return (
-    <>
+    <div className="bg-red-950 min-h-screen flex flex-col">
       <Header />
-      <main className="bg-black">
-        <Layout>
-          <About></About>
-          <Projects></Projects>
-        </Layout>
+      <main className="flex-1">
+        <About />
+        <Projects />
         <Beat />
       </main>
       <Footer />
-    </>
+    </div>
   );
 }
 
