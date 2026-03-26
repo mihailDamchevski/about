@@ -1,14 +1,25 @@
+import { motion } from "framer-motion";
+import { site } from "../config/site";
+import { fadeIn, viewport } from "../lib/motion";
+import { SocialLinks } from "./ui/SocialLinks";
+
 export const Footer = () => (
-  <footer className="bg-red-950 border-t border-red-900 py-8">
-    <div className="max-w-6xl mx-auto px-6">
-      <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-        <div className="text-gray-400 text-sm">
-          <p>&copy; 2025 Mihail Damchevski. All rights reserved.</p>
-        </div>
-        <div className="text-gray-500 text-sm">
-          <p>Built with React, TypeScript & Tailwind CSS</p>
-        </div>
+  <motion.footer
+    className="border-t border-[var(--border-subtle)] bg-[var(--bg-deep)] py-10"
+    variants={fadeIn}
+    initial="hidden"
+    whileInView="visible"
+    viewport={viewport}
+  >
+    <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 px-6 md:flex-row">
+      <div className="text-center md:text-left">
+        <p className="font-mono text-sm text-[var(--text-secondary)]">
+          © {new Date().getFullYear()} {site.displayName}
+        </p>
+        <p className="mt-1 font-mono text-xs text-[var(--text-muted)]">QA engineer · open to opportunities</p>
       </div>
+      <SocialLinks variant="footer" />
+      <p className="font-mono text-xs text-[var(--text-muted)]">React · TypeScript · Tailwind</p>
     </div>
-  </footer>
+  </motion.footer>
 );

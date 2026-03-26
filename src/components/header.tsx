@@ -1,157 +1,99 @@
-import { FaLinkedin, FaSquareGithub } from "react-icons/fa6";
+import { motion, useReducedMotion } from "framer-motion";
+import { useState } from "react";
+import { NAV_ITEMS } from "../config/navigation";
+import { site } from "../config/site";
 import { mihailAscii, qasw } from "../constants/mihailascii";
+import { springSnappy } from "../lib/motion";
+import { SocialLinks } from "./ui/SocialLinks";
 
 export const Header = () => {
+  const [open, setOpen] = useState(false);
+  const reduce = useReducedMotion();
+
   return (
     <>
-      <style>{`
-        .ascii-art {
-          font-family: 'Courier New', monospace;
-          font-size: clamp(0.3rem, 1.8vw, 0.5rem);
-          line-height: 1;
-          white-space: pre;
-          color: #b91c1c;
-          text-shadow: 0 0 10px rgba(185, 28, 28, 0.5);
-          margin: 0.5rem 0;
-          overflow: hidden;
-          word-break: break-all;
-          animation: textFlicker 8s ease-in-out infinite;
-          position: relative;
-        }
-
-        .ascii-art::after {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background: repeating-linear-gradient(
-            0deg,
-            rgba(0, 0, 0, 0.08),
-            rgba(0, 0, 0, 0.08) 2px,
-            transparent 2px,
-            transparent 4px
-          );
-          pointer-events: none;
-          animation: scanLines 6s linear infinite;
-        }
-
-        .ascii-art-secondary {
-          font-size: clamp(0.22rem, 1.3vw, 0.35rem);
-        }
-
-        @media (max-width: 640px) {
-          .ascii-art {
-            font-size: 0.32rem;
-          }
-          .ascii-art-secondary {
-            font-size: 0.24rem;
-          }
-        }
-      `}</style>
-      <div className="bg-gradient-to-b from-red-950 via-red-900 to-red-950 py-4 border-b border-red-900 border-opacity-30">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="ascii-art">{mihailAscii}</div>
-          <div className="ascii-art ascii-art-secondary" style={{ marginBottom: '0.3rem' }}>{qasw}</div>
+      <motion.div
+        className="border-b border-[var(--border-subtle)] bg-gradient-to-b from-[var(--bg-elevated)] to-[var(--bg-deep)] py-3"
+        initial={reduce ? false : { opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+      >
+        <div className="mx-auto max-w-6xl px-4 md:px-6">
+          <pre
+            className="ascii-banner ascii-blue font-mono text-[clamp(0.28rem,1.65vw,0.48rem)] leading-none"
+            aria-hidden="true"
+          >
+            {mihailAscii}
+          </pre>
+          <pre
+            className="ascii-banner-secondary ascii-blue-dim mt-1 font-mono text-[clamp(0.22rem,1.2vw,0.36rem)] leading-none"
+            aria-hidden="true"
+          >
+            {qasw}
+          </pre>
         </div>
-      </div>
-      <header className="w-full bg-red-950 border-b border-red-900 border-opacity-30 py-4 sticky top-0 z-50 backdrop-blur-sm bg-opacity-95">
-        <style>{`
-          .header-title {
-            font-family: 'Courier New', 'Monaco', monospace;
-            font-weight: 700;
-            letter-spacing: 0.1em;
-            color: #b91c1c;
-            text-shadow: 0 0 20px rgba(185, 28, 28, 0.8), 0 0 40px rgba(185, 28, 28, 0.4);
-            transition: all 0.3s ease;
-            animation: glitchEffect 8s ease-in-out infinite;
-          }
-          .header-title:hover {
-            color: #ef4444;
-            text-shadow: 0 0 30px rgba(239, 68, 68, 1), 0 0 50px rgba(185, 28, 28, 0.6);
-            animation: glitchEffect 0.4s ease-in-out;
-          }
-          .nav-link {
-            font-family: 'Courier New', 'Monaco', monospace;
-            font-weight: 600;
-            letter-spacing: 0.05em;
-            color: #b91c1c;
-            text-shadow: 0 0 15px rgba(185, 28, 28, 0.6);
-            text-transform: uppercase;
-            font-size: 0.85rem;
-            transition: all 0.2s ease;
-            position: relative;
-          }
-          .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(90deg, #b91c1c, #ef4444);
-            transition: width 0.3s ease;
-            box-shadow: 0 0 10px rgba(239, 68, 68, 0.6);
-          }
-          .nav-link:hover::after {
-            width: 100%;
-          }
-          .nav-link:hover {
-            color: #ef4444;
-            text-shadow: 0 0 25px rgba(239, 68, 68, 1), 0 0 40px rgba(185, 28, 28, 0.6);
-          }
-          .header-icon {
-            color: #b91c1c;
-            text-shadow: 0 0 15px rgba(185, 28, 28, 0.6);
-            transition: all 0.2s ease;
-          }
-          .header-icon:hover {
-            color: #ef4444;
-            text-shadow: 0 0 25px rgba(239, 68, 68, 1);
-            transform: scale(1.1);
-          }
-        `}</style>
-        <div className="max-w-6xl mx-auto px-6 flex items-center relative">
-          {/* Logo / Name */}
-          <a href="#home" className="header-title text-lg md:text-xl flex-shrink-0">
-            &gt; Mihail Damchevski
-          </a>
+      </motion.div>
 
-          {/* Navigation - Centered */}
-          <nav className="hidden md:flex gap-8 absolute left-1/2 transform -translate-x-1/2">
-            <a href="#about" className="nav-link">
-              $ about
-            </a>
-            <a href="#projects" className="nav-link">
-              $ projects
-            </a>
-            <a href="#beat" className="nav-link">
-              $ music
-            </a>
+      <motion.header
+        className="sticky top-0 z-50 border-b border-[var(--border-subtle)] bg-[var(--bg-deep)]/80 backdrop-blur-xl backdrop-saturate-150"
+        initial={reduce ? false : { y: -16, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={springSnappy}
+      >
+        <div className="mx-auto flex max-w-6xl items-center gap-4 px-4 py-3 md:px-6">
+          <motion.a
+            href="#home"
+            className="header-brand font-mono text-base font-bold tracking-wide text-[var(--accent)] [text-shadow:0_0_18px_rgb(var(--accent-rgb)/0.45)] md:text-lg"
+            whileHover={reduce ? undefined : { scale: 1.02 }}
+            whileTap={reduce ? undefined : { scale: 0.98 }}
+            transition={springSnappy}
+          >
+            &gt; {site.displayName}
+          </motion.a>
+
+          <nav
+            className="absolute left-1/2 hidden -translate-x-1/2 md:flex md:gap-8"
+            aria-label="Primary"
+          >
+            {NAV_ITEMS.map(({ href, label }) => (
+              <a key={href} href={href} className="nav-cyber">
+                $ {label}
+              </a>
+            ))}
           </nav>
 
-          {/* Social Links */}
-          <div className="flex gap-6 ml-auto flex-shrink-0">
-            <a
-              href="https://github.com/mihailDamchevski"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="header-icon text-xl transition-colors"
+          <div className="ml-auto flex items-center gap-4">
+            <SocialLinks variant="header" />
+
+            <motion.button
+              type="button"
+              className="flex h-10 w-10 flex-col items-center justify-center gap-1.5 rounded-md border border-[var(--border-subtle)] font-mono text-[var(--accent)] md:hidden"
+              aria-expanded={open}
+              aria-controls="mobile-nav"
+              onClick={() => setOpen((v) => !v)}
+              whileTap={reduce ? undefined : { scale: 0.95 }}
             >
-              <FaSquareGithub />
-            </a>
-            <a
-              href="https://mk.linkedin.com/in/mihail-damchevski-b556ba20b"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="header-icon text-xl transition-colors"
-            >
-              <FaLinkedin />
-            </a>
+              <span className="block h-0.5 w-5 bg-current" />
+              <span className="block h-0.5 w-5 bg-current" />
+              <span className="block h-0.5 w-5 bg-current" />
+              <span className="sr-only">Menu</span>
+            </motion.button>
           </div>
         </div>
-      </header>
+
+        <div
+          id="mobile-nav"
+          className={`border-t border-[var(--border-subtle)] bg-[var(--bg-deep)] px-4 py-4 md:hidden ${open ? "block" : "hidden"}`}
+        >
+          <nav className="flex flex-col gap-3" aria-label="Mobile">
+            {NAV_ITEMS.map(({ href, label }) => (
+              <a key={href} href={href} className="nav-cyber py-1" onClick={() => setOpen(false)}>
+                $ {label}
+              </a>
+            ))}
+          </nav>
+        </div>
+      </motion.header>
     </>
   );
 };
