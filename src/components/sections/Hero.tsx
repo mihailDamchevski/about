@@ -28,7 +28,7 @@ export const Hero = () => {
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.28] mix-blend-overlay"
         style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 320 320' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='white' stroke-opacity='0.22' stroke-width='1'%3E%3Cpath d='M0 40H320M0 120H320M0 200H320M0 280H320'/%3E%3Cpath d='M40 0V320M120 0V320M200 0V320M280 0V320'/%3E%3C/g%3E%3Cg fill='white' fill-opacity='0.26'%3E%3Ccircle cx='40' cy='40' r='2'/%3E%3Ccircle cx='120' cy='120' r='2'/%3E%3Ccircle cx='200' cy='200' r='2'/%3E%3Ccircle cx='280' cy='280' r='2'/%3E%3Ccircle cx='280' cy='40' r='2'/%3E%3Ccircle cx='40' cy='280' r='2'/%3E%3C/g%3E%3Cg fill='none' stroke='white' stroke-opacity='0.18' stroke-width='1.2'%3E%3Cpath d='M40 40H120V120H200V200H280'/%3E%3Cpath d='M280 40H200V120H120V200H40'/%3E%3C/g%3E%3C/svg%3E")`,
         }}
       />
 
