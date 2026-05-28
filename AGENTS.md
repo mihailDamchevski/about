@@ -40,4 +40,4 @@ Personal portfolio (QA engineer / test automation). React 18 + TypeScript + Vite
 - All sections use `aria-labelledby` + `<h2 className="sr-only">` for accessibility
 - Framer Motion components respect `prefers-reduced-motion` via `useReducedMotion()`
 - Section ASCII art lives in external `src/constants/ascii/*.txt` files imported with `?raw`
-- No CI/CD workflow, no test suite, no OpenCode config
+- CI/CD: `.github/workflows/deploy.yml` — runs lint → build → deploy on push to `main`

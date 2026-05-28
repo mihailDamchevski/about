@@ -21,4 +21,5 @@ export const TECH_DOCS_URLS: Readonly<Record<string, string>> = {
   TypeScript: "https://www.typescriptlang.org/docs/",
   React: "https://react.dev/",
   "Node.js": "https://nodejs.org/docs/",
+  Rust: "https://www.rust-lang.org/learn",
 };

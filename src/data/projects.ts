@@ -31,6 +31,13 @@ export const projects = [
       "AIW",
     ],
   },
+  {
+    session: "win-auto.log",
+    title: "win-auto — Windows desktop automation framework",
+    body:
+      "TypeScript framework for Windows GUI automation with a Rust-native backend. Launch apps, find UI elements, simulate input, and integrate with vitest. Published on npm.",
+    tags: ["TypeScript", "Rust", "Node.js", "JavaScript", "Github Actions"],
+  },
 ] as const;
 
 export type ProjectItem = (typeof projects)[number];
