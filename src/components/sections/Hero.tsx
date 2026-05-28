@@ -80,6 +80,16 @@ export const Hero = () => {
           >
             View GitHub
           </motion.a>
+          <motion.a
+            href="/MihailDamchevski_Resume.html"
+            download
+            className={btnGhost}
+            whileHover={reduce ? undefined : { scale: 1.02 }}
+            whileTap={reduce ? undefined : { scale: 0.98 }}
+            transition={springSnappy}
+          >
+            Download Resume
+          </motion.a>
           <a href="#about" className={linkMuted}>
             Read profile →
           </a>

@@ -1,5 +1,6 @@
 import { About } from "./components/sections/About";
 import { Beat } from "./components/sections/Beat";
+import { Experience } from "./components/sections/Experience";
 import { Hero } from "./components/sections/Hero";
 import { Projects } from "./components/sections/Projects";
 import { Footer } from "./components/footer";
@@ -14,6 +15,7 @@ function App() {
         <main className="flex-1">
           <Hero />
           <About />
+          <Experience />
           <Projects />
           <Beat />
         </main>

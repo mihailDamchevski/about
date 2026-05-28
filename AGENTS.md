@@ -16,9 +16,9 @@ Personal portfolio (QA engineer / test automation). React 18 + TypeScript + Vite
 
 ## Architecture
 
-- `src/main.tsx` → `App.tsx` → sections: `Hero`, `About`, `Projects`, `Beat`, `Footer`
+- `src/main.tsx` → `App.tsx` → sections: `Hero`, `About`, `Experience`, `Projects`, `Beat`, `Footer`
 - Config: `src/config/navigation.ts` (nav items), `src/config/site.ts` (social links)
-- Data: `src/data/about.ts`, `projects.ts`, `music.ts`
+- Data: `src/data/about.ts`, `experience.ts`, `projects.ts`, `music.ts`
 - Constants: `src/constants/` — ASCII art banners (`*.txt` loaded via `?raw`), tech doc URL map
 - Components: `sections/`, `ui/`, `projects/`, `motion/`
 - `src/lib/motion.ts` — shared Framer Motion variants; `src/lib/formatTime.ts` — audio time formatting
@@ -37,6 +37,8 @@ Personal portfolio (QA engineer / test automation). React 18 + TypeScript + Vite
 
 - `verbatimModuleSyntax` is on — use `import type` for type-only imports
 - `noUnusedLocals` / `noUnusedParameters` — strict, will error on unused vars
+- `public/404.html` — standalone cyber-noir themed 404 page
+- Navigation: `header.tsx` uses `IntersectionObserver` for scroll-aware active link highlighting (`.nav-cyber--active`)
 - All sections use `aria-labelledby` + `<h2 className="sr-only">` for accessibility
 - Framer Motion components respect `prefers-reduced-motion` via `useReducedMotion()`
 - Section ASCII art lives in external `src/constants/ascii/*.txt` files imported with `?raw`

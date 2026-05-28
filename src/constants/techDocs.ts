@@ -17,7 +17,7 @@ export const TECH_DOCS_URLS: Readonly<Record<string, string>> = {
   "Github Actions": "https://docs.github.com/en/actions",
   VirtualBox: "https://www.virtualbox.org/manual/",
   QEMU: "https://www.qemu.org/docs/master/",
-  AIW: "https://accessibilityinsights.io/docs/en/web/overview/",
+  AIW: "https://accessibilityinsights.io/docs/en/windows/overview/",
   TypeScript: "https://www.typescriptlang.org/docs/",
   React: "https://react.dev/",
   "Node.js": "https://nodejs.org/docs/",

@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { FaDownload } from "react-icons/fa6";
 import { site } from "../config/site";
 import { fadeIn, viewport } from "../lib/motion";
 import { SocialLinks } from "./ui/SocialLinks";
@@ -18,8 +19,24 @@ export const Footer = () => (
         </p>
         <p className="mt-1 font-mono text-xs text-[var(--text-muted)]">QA engineer · open to opportunities</p>
       </div>
+      <div className="flex items-center gap-4">
+        <a
+          href="mailto:mihaildamcevski@gmail.com"
+          className="font-mono text-xs text-[var(--accent)] underline-offset-2 transition-colors hover:text-[var(--text-primary)] hover:underline"
+        >
+          mihaildamcevski@gmail.com
+        </a>
+        <a
+          href="/MihailDamchevski_Resume.html"
+          download
+          className="flex items-center gap-1.5 font-mono text-xs text-[var(--accent)] underline-offset-2 transition-colors hover:text-[var(--text-primary)] hover:underline"
+          aria-label="Download resume"
+        >
+          <FaDownload size={12} />
+          Resume
+        </a>
+      </div>
       <SocialLinks variant="footer" />
-      <p className="font-mono text-xs text-[var(--text-muted)]">React · TypeScript · Tailwind</p>
     </div>
   </motion.footer>
 );

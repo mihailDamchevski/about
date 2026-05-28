@@ -1,5 +1,5 @@
 import { motion, useReducedMotion } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { NAV_ITEMS } from "../config/navigation";
 import { site } from "../config/site";
 import { mihailAscii, qasw } from "../constants/mihailascii";
@@ -8,7 +8,29 @@ import { SocialLinks } from "./ui/SocialLinks";
 
 export const Header = () => {
   const [open, setOpen] = useState(false);
+  const [activeId, setActiveId] = useState("");
   const reduce = useReducedMotion();
+
+  useEffect(() => {
+    const ids = NAV_ITEMS.map((item) => item.href.slice(1));
+    const observers: IntersectionObserver[] = [];
+
+    ids.forEach((id) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) setActiveId(id);
+        },
+        { rootMargin: "-40% 0px -55% 0px", threshold: 0 },
+      );
+      observer.observe(el);
+      observers.push(observer);
+    });
+
+    return () => observers.forEach((o) => o.disconnect());
+  }, []);
 
   return (
     <>
@@ -56,7 +78,11 @@ export const Header = () => {
             aria-label="Primary"
           >
             {NAV_ITEMS.map(({ href, label }) => (
-              <a key={href} href={href} className="nav-cyber">
+              <a
+                key={href}
+                href={href}
+                className={`nav-cyber${activeId === href.slice(1) ? " nav-cyber--active" : ""}`}
+              >
                 $ {label}
               </a>
             ))}

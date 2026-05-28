@@ -29,6 +29,15 @@
   width: 100%;
 }
 
+.nav-cyber--active {
+  color: var(--text-primary);
+}
+
+.nav-cyber--active::after {
+  width: 100%;
+  background: linear-gradient(90deg, var(--accent), transparent);
+}
+
 .ascii-blue {
   color: #93c5fd;
   text-shadow:
