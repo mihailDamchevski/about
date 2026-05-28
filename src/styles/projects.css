@@ -1,0 +1,47 @@
+.grid > div {
+  animation: slideInUp 0.55s ease-out backwards;
+}
+
+.grid > div:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.grid > div:nth-child(2) {
+  animation-delay: 0.08s;
+}
+
+.grid > div:nth-child(3) {
+  animation-delay: 0.16s;
+}
+
+.tech-stack {
+  border-top: 1px solid var(--border-subtle);
+  padding-top: var(--spacing-md);
+  margin-top: var(--spacing-lg);
+}
+
+.tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tech-tag {
+  display: inline-block;
+  font-family: "JetBrains Mono", monospace;
+  background: rgb(var(--accent-rgb) / 0.06);
+  border: 1px solid var(--border-strong);
+  border-radius: 6px;
+  padding: 0.35rem 0.65rem;
+  font-size: 0.72rem;
+  color: var(--accent);
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.tech-tag:hover {
+  background: rgb(var(--accent-rgb) / 0.14);
+  border-color: var(--accent);
+  transform: translateY(-1px);
+}

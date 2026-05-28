@@ -1,8 +1,9 @@
-import { type ChangeEvent, useEffect, useRef, useState } from "react";
+import { type ChangeEvent } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { FaDownload, FaPause, FaPlay, FaSliders, FaVolumeHigh } from "react-icons/fa6";
 import { musicAscii } from "../../constants/sectionascii";
 import { portfolioTrack } from "../../data/music";
+import { useAudioPlayer } from "../../hooks/useAudioPlayer";
 import { useWaveformBars } from "../../hooks/useWaveformBars";
 import { formatTime } from "../../lib/formatTime";
 import { scaleIn, springSnappy, viewport } from "../../lib/motion";
@@ -10,47 +11,29 @@ import { Reveal } from "../motion/Reveal";
 import { SectionIntro } from "../ui/SectionIntro";
 
 export const Beat = () => {
-  const audioRef = useRef<HTMLAudioElement>(null);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [currentTime, setCurrentTime] = useState(0);
-  const [duration, setDuration] = useState(0);
-  const [volume, setVolume] = useState(0.9);
+  const {
+    audioRef,
+    isPlaying,
+    currentTime,
+    duration,
+    volume,
+    isLoading,
+    error,
+    progress,
+    togglePlay,
+    seek,
+    setVolume,
+  } = useAudioPlayer(portfolioTrack.audioSrc);
   const reduce = useReducedMotion() ?? false;
   const barHeights = useWaveformBars(isPlaying, reduce);
 
-  useEffect(() => {
-    const el = audioRef.current;
-    if (el) el.volume = volume;
-  }, [volume]);
-
-  const togglePlay = () => {
-    if (audioRef.current) {
-      if (isPlaying) {
-        audioRef.current.pause();
-      } else {
-        void audioRef.current.play();
-      }
-      setIsPlaying(!isPlaying);
-    }
-  };
-
   const handleTimeChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const newTime = parseFloat(e.target.value);
-    setCurrentTime(newTime);
-    if (audioRef.current) {
-      audioRef.current.currentTime = newTime;
-    }
+    seek(parseFloat(e.target.value));
   };
 
   const handleVolumeChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const newVolume = parseFloat(e.target.value);
-    setVolume(newVolume);
-    if (audioRef.current) {
-      audioRef.current.volume = newVolume;
-    }
+    setVolume(parseFloat(e.target.value));
   };
-
-  const progress = duration > 0 ? (currentTime / duration) * 100 : 0;
 
   return (
     <section id="beat" className="beat-section" aria-labelledby="beat-heading">
@@ -113,25 +96,26 @@ export const Beat = () => {
             ))}
           </div>
 
-          <audio
-            ref={audioRef}
-            src={portfolioTrack.audioSrc}
-            onLoadedMetadata={(e) => setDuration(e.currentTarget.duration)}
-            onTimeUpdate={(e) => setCurrentTime(e.currentTarget.currentTime)}
-            onEnded={() => setIsPlaying(false)}
-          />
+          <audio ref={audioRef} src={portfolioTrack.audioSrc} preload="auto" />
 
           <div className="music-transport">
             <motion.button
               type="button"
-              className="music-play-btn"
+              className={`music-play-btn ${(isLoading || error) ? "opacity-40 cursor-not-allowed" : ""}`}
               onClick={togglePlay}
-              aria-label={isPlaying ? "Pause" : "Play"}
-              whileHover={reduce ? undefined : { scale: 1.06 }}
-              whileTap={reduce ? undefined : { scale: 0.94 }}
+              disabled={isLoading || !!error}
+              aria-label={isLoading ? "Loading" : error ? "Error" : isPlaying ? "Pause" : "Play"}
+              whileHover={reduce || isLoading || error ? undefined : { scale: 1.06 }}
+              whileTap={reduce || isLoading || error ? undefined : { scale: 0.94 }}
               transition={springSnappy}
             >
-              {isPlaying ? <FaPause size={22} /> : <FaPlay size={22} className="ml-0.5" />}
+              {isLoading ? (
+                <span className="inline-block h-4 w-4 animate-spin rounded-full border-2 border-[var(--accent)] border-t-transparent" />
+              ) : isPlaying ? (
+                <FaPause size={22} />
+              ) : (
+                <FaPlay size={22} className="ml-0.5" />
+              )}
             </motion.button>
 
             <div className="music-progress-block">
@@ -171,6 +155,12 @@ export const Beat = () => {
               />
             </div>
           </div>
+
+          {error ? (
+            <p className="mt-3 font-mono text-xs text-red-400" role="alert">
+              ⚠ {error}
+            </p>
+          ) : null}
 
           <motion.a
             href={portfolioTrack.audioSrc}

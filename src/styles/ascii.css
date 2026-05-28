@@ -1,0 +1,96 @@
+.nav-cyber {
+  font-family: "JetBrains Mono", monospace;
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+  text-decoration: none;
+  position: relative;
+  transition: color 0.2s ease;
+}
+
+.nav-cyber::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: linear-gradient(90deg, var(--accent), transparent);
+  transition: width 0.25s ease;
+}
+
+.nav-cyber:hover {
+  color: var(--text-primary);
+}
+
+.nav-cyber:hover::after {
+  width: 100%;
+}
+
+.ascii-blue {
+  color: #93c5fd;
+  text-shadow:
+    0 0 14px rgb(96 165 250 / 0.5),
+    0 0 32px rgb(59 130 246 / 0.22);
+}
+
+.ascii-blue-dim {
+  color: #7dd3fc;
+  text-shadow: 0 0 12px rgb(56 189 248 / 0.35);
+}
+
+.ascii-banner {
+  animation: asciiPulse 6s ease-in-out infinite;
+  overflow: hidden;
+  white-space: pre;
+}
+
+.ascii-banner-secondary {
+  opacity: 0.88;
+}
+
+.ascii-section-block {
+  margin: 0.75rem auto 0;
+  padding: 0;
+  overflow: visible;
+  text-align: center;
+  font-family: "JetBrains Mono", monospace;
+  font-size: clamp(0.32rem, 1.75vw, 0.5rem);
+  line-height: 1.05;
+  white-space: pre;
+}
+
+.music-ascii-tight {
+  font-size: clamp(0.28rem, 1.6vw, 0.45rem);
+}
+
+@keyframes asciiPulse {
+  0%,
+  100% {
+    filter: brightness(1);
+  }
+
+  50% {
+    filter: brightness(1.08);
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ascii-banner {
+    animation: none;
+  }
+}
