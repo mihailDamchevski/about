@@ -1,0 +1,9 @@
+.digital-rain-canvas {
+  opacity: 0.75;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .digital-rain-canvas {
+    display: none;
+  }
+}

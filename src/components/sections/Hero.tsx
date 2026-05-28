@@ -1,6 +1,7 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { site } from "../../config/site";
 import { heroItem, heroStagger, springSnappy } from "../../lib/motion";
+import { DigitalRain } from "../ui/DigitalRain";
 
 const btnPrimary =
   "inline-flex items-center justify-center rounded-lg border border-[var(--accent)] bg-[var(--accent)]/10 px-6 py-3 font-mono text-sm font-semibold uppercase tracking-wider text-[var(--accent)] shadow-[0_0_24px_rgb(var(--accent-rgb)/0.12)] transition-colors hover:bg-[var(--accent)]/22 hover:shadow-[0_0_36px_rgb(var(--accent-rgb)/0.28)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)] active:scale-[0.98]";
@@ -25,15 +26,9 @@ export const Hero = () => {
       </div>
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgb(var(--accent-rgb)/0.14),transparent)]" />
       <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_bottom,transparent_0%,var(--bg-deep)_100%)]" />
-      <div
-        className="pointer-events-none absolute inset-0 opacity-[0.28] mix-blend-overlay"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 320 320' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='white' stroke-opacity='0.22' stroke-width='1'%3E%3Cpath d='M0 40H320M0 120H320M0 200H320M0 280H320'/%3E%3Cpath d='M40 0V320M120 0V320M200 0V320M280 0V320'/%3E%3C/g%3E%3Cg fill='white' fill-opacity='0.26'%3E%3Ccircle cx='40' cy='40' r='2'/%3E%3Ccircle cx='120' cy='120' r='2'/%3E%3Ccircle cx='200' cy='200' r='2'/%3E%3Ccircle cx='280' cy='280' r='2'/%3E%3Ccircle cx='280' cy='40' r='2'/%3E%3Ccircle cx='40' cy='280' r='2'/%3E%3C/g%3E%3Cg fill='none' stroke='white' stroke-opacity='0.18' stroke-width='1.2'%3E%3Cpath d='M40 40H120V120H200V200H280'/%3E%3Cpath d='M280 40H200V120H120V200H40'/%3E%3C/g%3E%3C/svg%3E")`,
-        }}
-      />
-
+      <DigitalRain />
       <motion.div
-        className="relative mx-auto max-w-5xl px-6 py-24 md:py-32"
+          className="relative z-10 mx-auto max-w-5xl px-6 py-24 md:py-32"
         variants={heroStagger}
         initial={reduce ? false : "hidden"}
         animate="visible"
