@@ -42,13 +42,13 @@ export const Header = () => {
       >
         <div className="mx-auto max-w-6xl px-4 md:px-6">
           <pre
-            className="ascii-banner ascii-blue font-mono text-[clamp(0.22rem,1.65vw,0.48rem)] leading-none"
+            className="ascii-banner ascii-blue font-mono text-[clamp(0.1rem,0.7vw,0.48rem)] leading-none"
             aria-hidden="true"
           >
             {mihailAscii}
           </pre>
           <pre
-            className="ascii-banner-secondary ascii-blue-dim mt-1 font-mono text-[clamp(0.18rem,1.2vw,0.36rem)] leading-none"
+            className="ascii-banner-secondary ascii-blue-dim mt-1.5 font-mono text-[clamp(0.09rem,0.5vw,0.42rem)] leading-snug"
             aria-hidden="true"
           >
             {qasw}

@@ -52,45 +52,13 @@
 
 .ascii-banner {
   animation: asciiPulse 6s ease-in-out infinite;
-  overflow-x: auto;
-  overflow-y: hidden;
+  overflow: hidden;
   white-space: pre;
-  scrollbar-width: thin;
-  scrollbar-color: rgb(96 165 250 / 0.3) transparent;
-}
-
-.ascii-banner::-webkit-scrollbar {
-  height: 4px;
-}
-
-.ascii-banner::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.ascii-banner::-webkit-scrollbar-thumb {
-  background: rgb(96 165 250 / 0.3);
-  border-radius: 2px;
+  width: 100%;
 }
 
 .ascii-banner-secondary {
   opacity: 0.88;
-  overflow-x: auto;
-  overflow-y: hidden;
-  scrollbar-width: thin;
-  scrollbar-color: rgb(56 189 248 / 0.25) transparent;
-}
-
-.ascii-banner-secondary::-webkit-scrollbar {
-  height: 4px;
-}
-
-.ascii-banner-secondary::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.ascii-banner-secondary::-webkit-scrollbar-thumb {
-  background: rgb(56 189 248 / 0.25);
-  border-radius: 2px;
 }
 
 .ascii-section-block {
